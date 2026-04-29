@@ -1,2 +1,2 @@
 # Budgeting_AI
-Projeto de de reconhecimento de voz utilizando spring ai
+Projeto de reconhecimento de voz utilizando spring ai
