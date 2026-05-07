@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.multipart.MultipartFile;
 
 @RestController
 @RequestMapping("/api")
@@ -21,7 +20,7 @@ public class TextToSpeechController {
     }
 
     @PostMapping(value = "/sinthesize", produces = "audio/mp3")
-    public void sinthesize(@RequestBody SinthesizeRequest request) {
+    public ResponseEntity<ByteArrayResource> sinthesize(@RequestBody SinthesizeRequest request) {
         byte[] audio = textToSpeechModel.call(request.text());
         var resource = new ByteArrayResource(audio);
 
