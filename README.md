@@ -28,8 +28,8 @@ O Budgeting AI é uma API REST capaz de:
 # Tecnologias Utilizadas
 
 ## Back-end
-- Java 21
-- Spring Boot
+- Java 25
+- Spring Boot 4.0.5
 - Spring AI
 - Gradle
 
@@ -39,8 +39,8 @@ O Budgeting AI é uma API REST capaz de:
 - Prompt Engineering
 
 ## Banco de Dados
-- PostgreSQL
 - Spring Data JPA
+- MySQL
 
 ## Arquitetura
 - Clean Architecture
@@ -183,10 +183,12 @@ POST /api/text-to-speech
 
 ## Pré-requisitos
 
-- Java 21
-- PostgreSQL
-- Conta OpenAI
+- Java 25
+- MySQL
+- Conta OpenAI 
 - Gradle
+
+OBS: Não esqueça que precisa de créditos , já que os tokens desse projeto acabaram!!
 
 ---
 
@@ -203,9 +205,10 @@ OPENAI_API_KEY=your_key
 ## application.properties
 
 ```properties
-spring.datasource.url=jdbc:postgresql://localhost:5432/budgeting
-spring.datasource.username=postgres
-spring.datasource.password=postgres
+spring.datasource.url=jdbc:mysql://localhost:3306/budgeting
+spring.datasource.username=root
+spring.datasource.password=root
+spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
 
 spring.jpa.hibernate.ddl-auto=update
 
