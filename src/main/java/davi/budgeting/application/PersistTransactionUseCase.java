@@ -2,10 +2,12 @@ package davi.budgeting.application;
 
 import davi.budgeting.application.input.PersistTransactionInput;
 import davi.budgeting.application.output.TransactionOutput;
-import davi.budgeting.domain.Category;
 import davi.budgeting.domain.Transaction;
 import davi.budgeting.domain.TransactionRepository;
+import org.springframework.ai.tool.annotation.Tool;
+import org.springframework.stereotype.Service;
 
+@Service
 public class PersistTransactionUseCase {
     private final TransactionRepository transactionRepository;
 
@@ -13,9 +15,10 @@ public class PersistTransactionUseCase {
         this.transactionRepository = transactionRepository;
     }
 
-    public Transaction execute(PersistTransactionInput input){
+    @Tool(name = "persist-transaction", description = "Persiste uma nova transação financeira")
+    public TransactionOutput execute(PersistTransactionInput input) {
         var transaction = transactionRepository.save(
-                new Transaction(input.description(),input.amount(),input.category()));
+                new Transaction(input.description(), input.amount(), input.category()));
 
         return TransactionOutput.from(transaction);
     }
